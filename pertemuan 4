@@ -15,7 +15,9 @@ plot(diff(globaltemps.1900),ylab="Global temperature deviation differences",xlab
 acf(rstudent(fit),main="Sample ACF for standardized residuals")
 pacf(rstudent(fit),main="Sample ACF for standardized residuals")
 
- 
+acf(globaltemps.1900,main="Sample ACF for standardized residuals")
+pacf(globaltemps.1900,main="Sample ACF for standardized residuals") 
+
 
 # Simulation exercise
 # Simulate white noise processes and plot ACFs
