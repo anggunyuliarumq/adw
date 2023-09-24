@@ -1,0 +1,30 @@
+setwd("F:\\3. Kuliah\\2023\\1. Ajaran 2022-2023 (Semester Ganjil)\\2. Analisis Deret Waktu\\Materi Kuliah\\tambahan R")
+globaltemps=ts(read.table("globaltemps.txt", header=F),start=1856)
+globaltemps.1900 <- window(globaltemps,start=1900)
+plot(globaltemps.1900,ylab="Global temperature deviations (since 1900)",xlab="Year",type="o")
+fit <- lm(globaltemps.1900~time(globaltemps.1900))
+summary(fit)
+plot(globaltemps.1900,ylab="Global temperature deviations (since 1900)",xlab="Year",type="o")
+abline(fit)
+
+plot(resid(fit),ylab="Residuals",xlab="Year",type="o")
+
+plot(diff(globaltemps.1900),ylab="Global temperature deviation differences",xlab="Year",type="o")
+
+ 
+acf(rstudent(fit),main="Sample ACF for standardized residuals")
+pacf(rstudent(fit),main="Sample ACF for standardized residuals")
+
+ 
+
+# Simulation exercise
+# Simulate white noise processes and plot ACFs
+# Page 79
+w.n.1 <- rnorm(100,0,1)
+w.n.2 <- rnorm(100,0,1)
+par(mfrow=c(2,2))
+plot(w.n.1,ylab="White noise process.1",xlab="Time",type="o")
+acf(w.n.1,main="Sample ACF")
+plot(w.n.2,ylab="White noise process.2",xlab="Time",type="o")
+acf(w.n.2,main="Sample ACF")
+
